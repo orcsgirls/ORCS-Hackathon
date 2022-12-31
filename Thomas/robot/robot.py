@@ -16,25 +16,25 @@ class Robot():
         self.zero_right  = zero_right
         self.stop()
         
-    def stop(self):
-        self.motor_right.value = self.zero_right
-        self.motor_left.value  = self.zero_left
-    
-    def forward(self,speed=0.5):
+    def forward(self, speed=0.5):
+        self.motor_left.value = -speed
         self.motor_right.value = speed
-        self.motor_left.value  = speed
 
-    def backward(self,speed=0.5):
+    def backward(self, speed=0.5):
+        self.motor_left.value = speed
         self.motor_right.value = -speed
-        self.motor_left.value  = -speed
 
-    def left(self,speed=0.5):
+    def right(self, speed=0.5):
+        self.motor_left.value = speed
+        self.motor_right.value = speed
+
+    def left(self, speed=0.5):
+        self.motor_left.value = -speed
         self.motor_right.value = -speed
-        self.motor_left.value  =  speed
 
-    def right(self,speed=0.5):
-        self.motor_right.value =  speed
-        self.motor_left.value  = -speed
+    def stop(self):
+        self.motor_left.value = self.zero_left
+        self.motor_right.value = self.zero_right
         
     def close(self):
         self.stop()
